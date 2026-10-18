@@ -1,0 +1,9 @@
+name: 5B Self Hosted
+on: workflow_dispatch
+jobs:
+  local:
+    runs-on: [self-hosted, my-laptop]
+    steps:
+      - run: |
+          echo "Running on self-hosted runner"
+          hostname
