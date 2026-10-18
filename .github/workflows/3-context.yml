@@ -1,0 +1,30 @@
+name: 3 Context and Conditionals
+on: workflow_dispatch
+
+env:
+  APP_ENV: staging
+
+jobs:
+  context-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Print contexts
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Env: ${{ env.APP_ENV }}"
+          echo "Var: ${{ vars.MY_VAR }}"
+      - name: Branch check
+        if: contains(github.ref, 'main')
+        run: echo "Running on main"
+      - name: On success
+        if: success()
+        run: echo "All previous steps succeeded"
+      - name: On failure only
+        if: failure()
+        run: echo "This is skipped when nothing failed"
+      - name: Always
+        if: always()
+        run: echo "Always runs"
