@@ -4,8 +4,8 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
-      - uses: YOUR-USERNAME/hello-js-action@v1.0.0
+      - uses: 7ukzu/hello-js-action@v1.0.0
         id: hello
         with:
-          who-to-greet: YourName
+          who-to-greet: 54381 - Ahmad Arsalan
       - run: echo "Greeted at ${{ steps.hello.outputs.time }}"
